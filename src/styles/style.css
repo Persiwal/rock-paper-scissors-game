@@ -1,0 +1,66 @@
+@import "./variables.css";
+
+html {
+  font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: "Barlow Semi Condensed", sans-serif;
+  background: radial-gradient(at top, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+}
+
+h1,
+h2 {
+  margin: 0;
+}
+
+h1 {
+  color: white;
+  font-size: 1.5rem;
+  line-height: 0.8;
+}
+
+h2 {
+  color: var(--color-score);
+  font-size: 0.6rem;
+  letter-spacing: 0.1rem;
+  font-weight: var(--regular);
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 36px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 3px solid var(--color-border);
+  border-radius: 10px;
+  padding: 12px 8px 12px 24px;
+}
+
+h1 span {
+  display: block;
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  padding: 8px 24px;
+}
+
+.score span {
+  color: var(--color-text);
+  font-size: 2.5rem;
+  font-weight: var(--bold);
+}
