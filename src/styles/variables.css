@@ -1,0 +1,10 @@
+:root {
+  /* colors */
+  --color-text: hsl(229, 25%, 31%);
+  --color-score: hsl(229, 64%, 46%);
+  --color-border: hsl(217, 16%, 45%);
+
+  /* weights */
+  --regular: 600;
+  --bold: 700;
+}
