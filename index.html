@@ -37,7 +37,7 @@
         </div>
       </header>
       <main>
-        <!-- <section class="options">
+        <section class="options">
           <button class="option" id="paper">
             <div class="option__imageContainer">
               <img src="./src/images/icon-paper.svg" alt="paper" />
@@ -53,7 +53,7 @@
               <img src="./src/images/icon-rock.svg" alt="rock" />
             </div>
           </button>
-        </section> -->
+        </section>
         <section class="fight hide">
           <div class="fight__playerPick">
             <h3>YOU PICKED</h3>
@@ -63,8 +63,17 @@
               </div>
             </div>
           </div>
+          <div class="fight__result hide">
+            <h4>YOU LOSE</h4>
+            <button class="fight__result button">PLAY AGAIN</button>
+          </div>
           <div class="fight__computerPick">
             <h3>THE HOUSE PICKED</h3>
+            <div class="option hide">
+              <div class="option__imageContainer">
+                <img src="" alt="" />
+              </div>
+            </div>
             <div class="pickPlaceholder"></div>
           </div>
         </section>
