@@ -17,6 +17,7 @@
       href="./images/favicon-32x32.png"
     />
     <link rel="stylesheet" href="./src/styles/style.css" />
+    <script src="./src/script.js" defer></script>
 
     <title>Frontend Mentor | Rock, Paper, Scissors</title>
 
@@ -30,30 +31,43 @@
           <span>PAPER</span>
           <span>SCISSORS</span>
         </h1>
-        <div class="score">
+        <div class="scoreContainer">
           <h2>SCORE</h2>
-          <span>12</span>
+          <span class="score">12</span>
         </div>
       </header>
       <main>
-        <section class="options">
-          <button id="paper">
-            <div class="button__image-container">
+        <!-- <section class="options">
+          <button class="option" id="paper">
+            <div class="option__imageContainer">
               <img src="./src/images/icon-paper.svg" alt="paper" />
             </div>
           </button>
-          <button id="scissors">
-            <div class="button__image-container">
+          <button class="option" id="scissors">
+            <div class="option__imageContainer">
               <img src="./src/images/icon-scissors.svg" alt="scissors" />
             </div>
           </button>
-          <button id="rock">
-            <div class="button__image-container">
+          <button class="option" id="rock">
+            <div class="option__imageContainer">
               <img src="./src/images/icon-rock.svg" alt="rock" />
             </div>
           </button>
+        </section> -->
+        <section class="fight hide">
+          <div class="fight__playerPick">
+            <h3>YOU PICKED</h3>
+            <div class="option" id="rock">
+              <div class="option__imageContainer">
+                <img src="./src/images/icon-rock.svg" alt="rock" />
+              </div>
+            </div>
+          </div>
+          <div class="fight__computerPick">
+            <h3>THE HOUSE PICKED</h3>
+            <div class="pickPlaceholder"></div>
+          </div>
         </section>
-        <section></section>
       </main>
     </div>
 

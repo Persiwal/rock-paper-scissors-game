@@ -15,6 +15,10 @@ body {
   font-family: "Barlow Semi Condensed", sans-serif;
 }
 
+.hide {
+  display: none !important;
+}
+
 h1,
 h2 {
   margin: 0;
@@ -54,7 +58,7 @@ h1 span {
   display: block;
 }
 
-.score {
+.scoreContainer {
   padding: 8px 24px;
   border-radius: 10px;
 
@@ -65,7 +69,7 @@ h1 span {
   align-items: center;
 }
 
-.score span {
+.scoreContainer .score {
   font-size: 2.5rem;
   font-weight: var(--bold);
   color: var(--color-text);
@@ -74,13 +78,16 @@ h1 span {
 main {
   margin: 0 auto;
   padding: 160px 0;
-  max-width: 600px;
 }
 
-.options {
+section {
   margin: 0 auto;
   width: 60%;
   aspect-ratio: 313 / 278;
+}
+
+.options {
+  max-width: 600px;
 
   background: url("../images/bg-triangle.svg");
   background-repeat: no-repeat;
@@ -89,8 +96,8 @@ main {
   position: relative;
 }
 
-button {
-  width: 50%;
+.option {
+  width: 40%;
   border: none;
   border-radius: 50%;
   aspect-ratio: 1/1;
@@ -103,7 +110,7 @@ button {
   cursor: pointer;
 }
 
-.button__imageContainer {
+.option__imageContainer {
   width: 80%;
   height: 80%;
   border-radius: 50%;
@@ -115,7 +122,7 @@ button {
   align-items: center;
 }
 
-.button__imageContainer img {
+.option__imageContainer img {
   width: 50%;
 }
 
@@ -144,4 +151,39 @@ button {
   right: 50%;
 
   transform: translate(50%, 50%);
+}
+
+.fight {
+  margin: 0 auto;
+  max-width: 800px;
+
+  color: white;
+
+  display: flex;
+  justify-content: center;
+}
+
+.fight > * {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fight__playerPick .option {
+  position: static;
+
+  cursor: auto;
+  transform: none !important;
+}
+
+.pickPlaceholder {
+  aspect-ratio: 1/1;
+  width: 40%;
+  border-radius: 50%;
+
+  background-color: black;
+
+  opacity: 10%;
 }
