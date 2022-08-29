@@ -25,7 +25,7 @@ setCurrentScore();
 
 options.forEach((option) =>
   option.addEventListener("click", (e) => {
-    createFightScene(e.currentTarget.id);
+    createFightScene(e.currentTarget.dataset.id);
   })
 );
 
@@ -37,33 +37,64 @@ const resetScene = () => {
   computerPickContainer.appendChild(pickPlaceholder);
 };
 
+const createFightScene = (pick) => {
+  optionScene.classList.add("hide");
+  fightScene.classList.remove("hide");
+
+  playerPick.dataset.id = pick;
+  playerPickImg.src = `./src/images/icon-${pick}.svg`;
+
+  setTimeout(() => {
+    generateComputerPick();
+    chooseWinner();
+  }, 1000);
+};
+
 const generateComputerPick = () => {
   //create random number between in interval 0-2
   const randomPick = Math.floor(Math.random() * (2 - 0 + 1)) + 0;
 
   computerPickContainer.removeChild(pickPlaceholder);
-  computerPick.id = options[randomPick].id;
-  computerPickImg.src = `./src/images/icon-${computerPick.id}.svg`;
-  computerPickImg.alt = computerPick.id;
+  computerPick.dataset.id = options[randomPick].dataset.id;
+  computerPickImg.src = `./src/images/icon-${computerPick.dataset.id}.svg`;
+  computerPickImg.alt = computerPick.dataset.id;
   computerPick.classList.remove("hide");
 };
 
 const chooseWinner = () => {
   result.classList.remove("hide");
 
-  if (playerPick.id === computerPick.id) {
+  if (playerPick.dataset.id === computerPick.dataset.id) {
     resultText.innerText = "DRAW";
-  } else if (playerPick.id === "scissors" && computerPick.id === "paper") {
+  } else if (
+    playerPick.dataset.id === "scissors" &&
+    computerPick.dataset.id === "paper"
+  ) {
     resultText.innerText = "YOU WIN";
-  } else if (playerPick.id === "paper" && computerPick.id === "scissors") {
+  } else if (
+    playerPick.dataset.id === "paper" &&
+    computerPick.dataset.id === "scissors"
+  ) {
     resultText.innerText = "YOU LOSE";
-  } else if (playerPick.id === "rock" && computerPick.id === "scissors") {
+  } else if (
+    playerPick.dataset.id === "rock" &&
+    computerPick.dataset.id === "scissors"
+  ) {
     resultText.innerText = "YOU WIN";
-  } else if (playerPick.id === "scissors" && computerPick.id === "rock") {
+  } else if (
+    playerPick.dataset.id === "scissors" &&
+    computerPick.dataset.id === "rock"
+  ) {
     resultText.innerText = "YOU LOSE";
-  } else if (playerPick.id === "paper" && computerPick.id === "rock") {
+  } else if (
+    playerPick.dataset.id === "paper" &&
+    computerPick.dataset.id === "rock"
+  ) {
     resultText.innerText = "YOU WIN";
-  } else if (playerPick.id === "rock" && computerPick.id === "paper") {
+  } else if (
+    playerPick.dataset.id === "rock" &&
+    computerPick.dataset.id === "paper"
+  ) {
     resultText.innerText = "YOU LOSE";
   }
 
@@ -76,19 +107,6 @@ const chooseWinner = () => {
     localStorage.setItem("computerScore", state.computerScore);
     setCurrentScore();
   }
-};
-
-const createFightScene = (pick) => {
-  optionScene.classList.add("hide");
-  fightScene.classList.remove("hide");
-
-  playerPick.id = pick;
-  playerPickImg.src = `./src/images/icon-${pick}.svg`;
-
-  setTimeout(() => {
-    generateComputerPick();
-    chooseWinner();
-  }, 1000);
 };
 
 playAgainButton.addEventListener("click", () => {
