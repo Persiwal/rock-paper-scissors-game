@@ -17,6 +17,12 @@ const state = {
   computerScore: localStorage.getItem("computerScore") | 0,
 };
 
+const winningsResultsMap = {
+  paper: ["rock"],
+  rock: ["scissors"],
+  scissors: ["paper"],
+};
+
 const setCurrentScore = () => {
   score.innerText = state.playerScore - state.computerScore;
 };
@@ -46,13 +52,13 @@ const createFightScene = (pick) => {
 
   setTimeout(() => {
     generateComputerPick();
-    chooseWinner();
+    showResult();
   }, 1000);
 };
 
 const generateComputerPick = () => {
   //create random number between in interval 0-2
-  const randomPick = Math.floor(Math.random() * (2 - 0 + 1)) + 0;
+  const randomPick = Math.floor(Math.random() * options.length);
 
   computerPickContainer.removeChild(pickPlaceholder);
   computerPick.dataset.id = options[randomPick].dataset.id;
@@ -61,48 +67,20 @@ const generateComputerPick = () => {
   computerPick.classList.remove("hide");
 };
 
-const chooseWinner = () => {
+const showResult = () => {
   result.classList.remove("hide");
 
   if (playerPick.dataset.id === computerPick.dataset.id) {
     resultText.innerText = "DRAW";
   } else if (
-    playerPick.dataset.id === "scissors" &&
-    computerPick.dataset.id === "paper"
+    winningsResultsMap[playerPick.dataset.id].includes(computerPick.dataset.id)
   ) {
     resultText.innerText = "YOU WIN";
-  } else if (
-    playerPick.dataset.id === "paper" &&
-    computerPick.dataset.id === "scissors"
-  ) {
-    resultText.innerText = "YOU LOSE";
-  } else if (
-    playerPick.dataset.id === "rock" &&
-    computerPick.dataset.id === "scissors"
-  ) {
-    resultText.innerText = "YOU WIN";
-  } else if (
-    playerPick.dataset.id === "scissors" &&
-    computerPick.dataset.id === "rock"
-  ) {
-    resultText.innerText = "YOU LOSE";
-  } else if (
-    playerPick.dataset.id === "paper" &&
-    computerPick.dataset.id === "rock"
-  ) {
-    resultText.innerText = "YOU WIN";
-  } else if (
-    playerPick.dataset.id === "rock" &&
-    computerPick.dataset.id === "paper"
-  ) {
-    resultText.innerText = "YOU LOSE";
-  }
-
-  if (resultText.innerHTML === "YOU WIN") {
     state.playerScore++;
     localStorage.setItem("playerScore", state.playerScore);
     setCurrentScore();
-  } else if (resultText.innerHTML === "YOU LOSE") {
+  } else {
+    resultText.innerText = "YOU LOSE";
     state.computerScore++;
     localStorage.setItem("computerScore", state.computerScore);
     setCurrentScore();
