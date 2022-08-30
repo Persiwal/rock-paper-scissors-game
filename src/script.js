@@ -59,7 +59,7 @@ const createFightScene = (pick) => {
 };
 
 const generateComputerPick = () => {
-  //create random number between in interval 0-2
+  //create random number in interval 0-2
   const randomPick = Math.floor(Math.random() * options.length);
 
   computerPickContainer.removeChild(pickPlaceholder);
