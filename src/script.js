@@ -41,6 +41,8 @@ const resetScene = () => {
   optionScene.classList.remove("hide");
   computerPick.classList.add("hide");
   computerPickContainer.appendChild(pickPlaceholder);
+  playerPick.classList.remove("winner");
+  computerPick.classList.remove("winner");
 };
 
 const createFightScene = (pick) => {
@@ -78,11 +80,13 @@ const showResult = () => {
     resultText.innerText = "YOU WIN";
     state.playerScore++;
     localStorage.setItem("playerScore", state.playerScore);
+    playerPick.classList.add("winner");
     setCurrentScore();
   } else {
     resultText.innerText = "YOU LOSE";
     state.computerScore++;
     localStorage.setItem("computerScore", state.computerScore);
+    computerPick.classList.add("winner");
     setCurrentScore();
   }
 };

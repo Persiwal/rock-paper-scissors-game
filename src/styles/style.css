@@ -201,6 +201,10 @@ section {
   grid-area: playerPick;
 }
 
+.winner {
+  animation: illuminate 0.3s ease-in-out forwards;
+}
+
 .fight__computerPick {
   grid-area: computerPick;
 }
@@ -271,5 +275,24 @@ section {
 
   .fight__result .button {
     font-size: 0.6rem;
+  }
+}
+
+@keyframes illuminate {
+  25% {
+    box-shadow: 0 0 3em var(--color-score);
+  }
+
+  50% {
+    box-shadow: 0 0 3em var(--color-score), 0 0 5em var(--color-text);
+  }
+
+  75% {
+    box-shadow: 0 0 3em var(--color-score), 0 0 5em var(--color-text),
+      0 0 7em var(--color-border);
+  }
+  100% {
+    box-shadow: 0 0 3em var(--color-score), 0 0 5em var(--color-text),
+      0 0 7em var(--color-border);
   }
 }
